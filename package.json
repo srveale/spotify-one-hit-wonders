@@ -1,16 +1,19 @@
 {
   "name": "spotify-one-hit-wonders",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "body-parser": "~1.17.1",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.3",
-    "express": "~4.15.2",
-    "morgan": "~1.8.1",
-    "serve-favicon": "~2.4.2"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srveale/spotify-one-hit-wonders.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srveale/spotify-one-hit-wonders/issues"
+  },
+  "homepage": "https://github.com/srveale/spotify-one-hit-wonders#readme"
 }
