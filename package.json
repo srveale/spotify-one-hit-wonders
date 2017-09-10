@@ -1,0 +1,19 @@
+{
+  "name": "spotify-one-hit-wonders",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srveale/spotify-one-hit-wonders.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srveale/spotify-one-hit-wonders/issues"
+  },
+  "homepage": "https://github.com/srveale/spotify-one-hit-wonders#readme"
+}
