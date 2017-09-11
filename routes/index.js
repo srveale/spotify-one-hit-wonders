@@ -3,7 +3,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+	console.log('in root route')
+  	res.send('the data from the api');
 });
 
 module.exports = router;
