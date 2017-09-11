@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "apps" : [{
-    "name" : "hello world",
-    "script" : "./server.js",
+    "name" : "Spotify One Hit Wonders",
+    "script" : "npm start",
     "env" : {
       "VARIABLE_NAME": "true"
     }
