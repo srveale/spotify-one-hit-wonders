@@ -29,7 +29,7 @@
         "user" : "scott",
         "host" : "scott.tillerdigital.ca",
         "ref"  : "origin/master",
-        "repo" : "git@github.com:srveale/pm2-deploy-test.git",
+        "repo" : "git@github.com:srveale/spotify-one-hit-wonders",
         "path" : "/home/scott/",
         "post-deploy" : "pm2 startOrRestart package.json --env dev",
         "env"  : {

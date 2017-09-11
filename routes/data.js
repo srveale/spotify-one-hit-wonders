@@ -2,8 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-	// res.send('data from the api')
+router.get('/artist', function(req, res, next) {
+	// Expects a keyword on req.body, eg "Muse"
+	// Calls the api and gets all track data
+	// runs fitting function
+	// returns tracking data and fit data, including OHW param
 	res.json([{
 		id: 1,
 		username: "samsepi0l"
