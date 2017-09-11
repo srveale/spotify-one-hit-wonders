@@ -6,6 +6,37 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "apps" : [{
+    "name" : "hello world",
+    "script" : "./server.js",
+    "env" : {
+      "VARIABLE_NAME": "true"
+    }
+  }],
+  "deploy" : {
+      "production" : {
+        "user" : "scott",
+        "host" : "scott.tillerdigital.ca",
+        "ref"  : "origin/master",
+        "repo" : "git@github.com:srveale/pm2-deploy-test.git",
+        "path" : "/home/scott/",
+        "post-deploy" : "pm2 startOrRestart package.json --env dev",
+        "env"  : {
+          "NODE_ENV": "production"
+        }
+      },
+      "staging" : {
+        "user" : "scott",
+        "host" : "scott.tillerdigital.ca",
+        "ref"  : "origin/master",
+        "repo" : "git@github.com:srveale/pm2-deploy-test.git",
+        "path" : "/home/scott/",
+        "post-deploy" : "pm2 startOrRestart package.json --env dev",
+        "env"  : {
+          "NODE_ENV": "staging"
+        }
+      }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/srveale/spotify-one-hit-wonders.git"
