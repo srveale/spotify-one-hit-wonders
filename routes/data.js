@@ -37,21 +37,23 @@ router.get('/artist', function(req, res, next) {
 	const saved_access_token = require('../config.js').access_token;
 
 	if (!saved_access_token) {
-		request.post(tokenOptions, (errFirst, resFirst, bodyFirst) => {
-			console.log('first body', bodyFirst.access_token)
+		request.post(tokenOptions, (tokenError, tokenRes, tokenBody) => {
+			console.log('typof tokenBody', typeof tokenBody)
+			console.log('tokenBody', tokenBody)
+			console.log('access_token', tokenBody['access_token'])
 			const authOptions = {
 				url: 'https://api.spotify.com/v1/artists/0OdUWJ0sBjDrqHygGUXeCF/top-tracks?country=CA',
 				headers: {
-					'Authorization': 'Bearer ' + bodyFirst.access_token
+					'Authorization': 'Bearer ' + 'BQDCDJUjbncVCnQg2X1T7KhUbJJdbfZmxHwkunTlmx_drtPX3IuhCrr5lDQtXiUM60zNXnol7BCGiX3LRoSgtA'
 				},
 				json: true,
 				method: "POST"
 			};
-			request.get(authOptions, (err, res, body)=> {
+			request.get(authOptions, (tracksError, tracksRes, tracksBody)=> {
 				// Process track data and send it with response
-				console.log('second body', body)
-				const processedData = processTracks(body.tracks);
-				res.json(processedData)
+				console.log('second body', tracksBody)
+				const processedData = processTracks(tracksBody.tracks);
+				res.send(processedData)
 			})
 		})
 	} else {
