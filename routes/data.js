@@ -1,10 +1,14 @@
-// Several steps before getting the actual data
-// 1. Get access token from https://accounts.spotify.com/api/token
-// 2. Get artist id from https://api.spotify.com/v1/search
-// 3. Get artist tracks from https://api.spotify.com/v1/artists/{id}/top-tracks
+/* Several steps before getting the actual data
+ 1. Get access token from https://accounts.spotify.com/api/token
+2. Get artist id from https://api.spotify.com/v1/search
+3. Get artist tracks from https://api.spotify.com/v1/artists/{id}/top-tracks
 
-// Question: How to handle the access token? Can't be for every search - I
-// think it won't let me request that many. Where to store it? Later: How to refresh it?
+Question: How to handle the access token? Can't be for every search - I
+ think it won't let me request that many. Where to store it? Later: How to refresh it?
+
+TODO: Get artist Id from search endpoint
+
+*/ 
 
 const express = require('express');
 const router = express.Router();
