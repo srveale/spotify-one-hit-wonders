@@ -50,6 +50,7 @@
   },
   "homepage": "https://github.com/srveale/spotify-one-hit-wonders#readme",
   "dependencies": {
+    "regression": "^2.0.0",
     "request": "^2.81.0"
   }
 }
