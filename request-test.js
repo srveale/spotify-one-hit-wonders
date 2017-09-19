@@ -33,5 +33,3 @@ request.post(tokenOptions, (errFirst, resFirst, bodyFirst) => {
 		console.log('second body', body)
 	})
 })
-
-[73, 64, 62, 57, 56, 53, 52, 51, 51, 50]
