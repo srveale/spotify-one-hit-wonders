@@ -54,7 +54,13 @@ router.get('/:artist', function(req, res, next) {
 				method: "POST"
 			}
 			request.get(searchOptions, (searchError, searchRes, searchBody) => {
-				const artistId = searchBody.artists.items[0].id;
+				const items = searchBody.artists.items;
+
+				if (!items.length) {
+					console.log('searchBody with no artists', searchBody)
+					return res.send({ error: "No artists found, try again" })
+				}
+				const artistId = items[0].id;
 
 				// Get Track Data
 				const trackOptions = {
