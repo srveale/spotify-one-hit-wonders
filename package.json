@@ -9,7 +9,7 @@
   },
   "apps": [
     {
-      "name": "Spotify One Hit Wonders",
+      "name": "SPOT-OHW-API",
       "script": "bin/www",
       "env": {
         "PORT": "3001"
@@ -19,11 +19,11 @@
   "deploy": {
     "production": {
       "user": "scott",
-      "host": "scott.tillerdigital.ca",
+      "host": "scottveale.ca",
       "ref": "origin/master",
       "repo": "git@github.com:srveale/spotify-one-hit-wonders",
-      "path": "/home/scott/",
-      "post-deploy": "pm2 startOrRestart package.json --env dev",
+      "path": "/home/scott/api",
+      "post-deploy": "npm i && pm2 startOrGracefulReload package.json",
       "env": {
         "NODE_ENV": "production"
       }
