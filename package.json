@@ -23,7 +23,7 @@
       "ref": "origin/master",
       "repo": "git@github.com:srveale/spotify-one-hit-wonders",
       "path": "/home/scott/api",
-      "post-deploy": "npm i && pm2 startOrGracefulReload package.json",
+      "post-deploy": "npm install && pm2 startOrGracefulReload package.json --env production",
       "env": {
         "NODE_ENV": "production"
       }
