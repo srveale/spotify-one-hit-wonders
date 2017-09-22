@@ -9,7 +9,7 @@
   },
   "apps": [
     {
-      "name": "Spotify One Hit Wonders",
+      "name": "SPOT-OHW-API",
       "script": "bin/www",
       "env": {
         "PORT": "3001"
@@ -19,11 +19,11 @@
   "deploy": {
     "production": {
       "user": "scott",
-      "host": "scott.tillerdigital.ca",
+      "host": "scottveale.ca",
       "ref": "origin/master",
       "repo": "git@github.com:srveale/spotify-one-hit-wonders",
-      "path": "/home/scott/",
-      "post-deploy": "pm2 startOrRestart package.json --env dev",
+      "path": "/home/scott/api",
+      "post-deploy": "npm install && pm2 startOrGracefulReload package.json --env production",
       "env": {
         "NODE_ENV": "production"
       }
@@ -51,7 +51,12 @@
   },
   "homepage": "https://github.com/srveale/spotify-one-hit-wonders#readme",
   "dependencies": {
+    "body-parser": "^1.18.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.4",
+    "morgan": "^1.8.2",
     "regression": "^2.0.0",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "serve-favicon": "^2.4.4"
   }
 }
