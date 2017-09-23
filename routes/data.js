@@ -8,12 +8,12 @@ Question: How to handle the access token? Can't be for every search - I
 
 TODO: Get artist Id from search endpoint
 
-*/ 
+*/
 
 const express = require('express');
 const router = express.Router();
 const request = require('request');
-const processTracks = require('../scripts/process-tracks'); 
+const processTracks = require('../scripts/process-tracks');
 
 const { redirect_uri, client_secret, client_id } = require('../config');
 
@@ -68,9 +68,10 @@ router.get('/:artist', function(req, res, next) {
 				request.get(trackOptions, (tracksError, tracksRes, tracksBody)=> {
 					// Process track data and send it with response
 					const processedData = processTracks(tracksBody.tracks);
+					console.log('processedData', processedData)
 					res.send(processedData)
 				})
-				
+
 			})
 
 		})
