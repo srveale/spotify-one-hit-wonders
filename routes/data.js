@@ -54,6 +54,10 @@ router.get('/:artist', function(req, res, next) {
 				method: "POST"
 			}
 			request.get(searchOptions, (searchError, searchRes, searchBody) => {
+				if (!searchBody.artists.items.length) {
+					return res.send({error: "No artists found"})
+				}
+
 				const artistId = searchBody.artists.items[0].id;
 
 				// Get Track Data
@@ -68,7 +72,6 @@ router.get('/:artist', function(req, res, next) {
 				request.get(trackOptions, (tracksError, tracksRes, tracksBody)=> {
 					// Process track data and send it with response
 					const processedData = processTracks(tracksBody.tracks);
-					console.log('processedData', processedData)
 					res.send(processedData)
 				})
 
