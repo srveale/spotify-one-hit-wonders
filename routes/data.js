@@ -8,12 +8,12 @@ Question: How to handle the access token? Can't be for every search - I
 
 TODO: Get artist Id from search endpoint
 
-*/ 
+*/
 
 const express = require('express');
 const router = express.Router();
 const request = require('request');
-const processTracks = require('../scripts/process-tracks'); 
+const processTracks = require('../scripts/process-tracks');
 
 const { redirect_uri, client_secret, client_id } = require('../config');
 
@@ -55,13 +55,12 @@ router.get('/:artist', function(req, res, next) {
 			}
 			request.get(searchOptions, (searchError, searchRes, searchBody) => {
 				const items = searchBody.artists.items;
-
 				if (!items.length) {
 					console.log('searchBody with no artists', searchBody)
 					return res.send({ error: "No artists found, try again" })
 				}
-				const artistId = items[0].id;
 
+				const artistId = items[0].id;
 				// Get Track Data
 				const trackOptions = {
 					url: `https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=CA`,
@@ -76,7 +75,7 @@ router.get('/:artist', function(req, res, next) {
 					const processedData = processTracks(tracksBody.tracks);
 					res.send(processedData)
 				})
-				
+
 			})
 
 		})
