@@ -9,7 +9,7 @@
   },
   "apps": [
     {
-      "name": "SPOT-OHW-API",
+      "name": "SPOT-API",
       "script": "bin/www",
       "env": {
         "PORT": "3001"
