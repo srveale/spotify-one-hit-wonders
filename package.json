@@ -10,7 +10,7 @@
   "apps": [
     {
       "name": "SPOT-API",
-      "script": "bin/www",
+      "script": "PORT=3001 bin/www",
       "env": {
         "PORT": "3001"
       }
