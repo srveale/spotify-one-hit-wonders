@@ -23,7 +23,7 @@
       "ref": "origin/master",
       "repo": "git@github.com:srveale/spotify-one-hit-wonders",
       "path": "/home/scott/api",
-      "post-deploy": "npm install && PORT=3001 bin/www",
+      "post-deploy": "npm install && npm start",
       "env": {
         "NODE_ENV": "production"
       }
