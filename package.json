@@ -25,7 +25,8 @@
       "path": "/home/scott/api",
       "post-deploy": "npm install && NODE_ENV=production pm2 startOrGracefulReload package.json",
       "env": {
-        "NODE_ENV": "production"
+        "NODE_ENV": "production",
+        "PORT": 3001
       }
     },
     "staging": {
