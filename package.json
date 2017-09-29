@@ -11,6 +11,7 @@
     {
       "name": "SPOT-API",
       "script": "bin/www",
+      "interpreter" : "node@7.10.1",
       "env": {
         "PORT": "3001"
       }
