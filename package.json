@@ -10,7 +10,7 @@
   "apps": [
     {
       "name": "SPOT-API",
-      "script": "PORT=3001 bin/www",
+      "script": "bin/www",
       "env": {
         "PORT": "3001"
       }
@@ -23,7 +23,7 @@
       "ref": "origin/master",
       "repo": "git@github.com:srveale/spotify-one-hit-wonders",
       "path": "/home/scott/api",
-      "post-deploy": "npm install && npm start",
+      "post-deploy": "npm install && NODE_ENV=production pm2 startOrGracefulReload package.json",
       "env": {
         "NODE_ENV": "production"
       }
