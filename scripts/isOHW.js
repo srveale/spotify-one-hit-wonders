@@ -5,21 +5,22 @@ const isOHW = (trackData, fitParams) => {
   const onlyOneHit = ohwFactor > 100;
 
   const ohwBool = hasHit && onlyOneHit;
+  let ohwString;
   switch (true) {
     case (ohwFactor < 20):
-      const ohwString = ohwStrings.superLow;
+      ohwString = ohwStrings.superLow;
       break;
     case (ohwFactor < 50):
-      const ohwString = ohwStrings.low;
+      ohwString = ohwStrings.low;
       break;
     case (ohwFactor < 75):
-      const ohwString = ohwStrings.medium;
+      ohwString = ohwStrings.medium;
       break;
     case (ohwFactor < 100):
-      const ohwString = ohwStrings.high;
+      ohwString = ohwStrings.high;
       break;
     default:
-      const ohwString = ohwStrings.superHigh;
+      ohwString = ohwStrings.superHigh;
       break;
   }
   return { ohwBool, ohwString };
