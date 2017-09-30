@@ -5,7 +5,7 @@ const isOHW = (trackData, fitParams) => {
   const onlyOneHit = ohwFactor > 100;
 
   const ohwBool = hasHit && onlyOneHit;
-  let ohwString;
+  let ohwString = "";
   switch (true) {
     case (ohwFactor < 20):
       ohwString = ohwStrings.superLow;
@@ -24,6 +24,7 @@ const isOHW = (trackData, fitParams) => {
       break;
   }
   return { ohwBool, ohwString };
+}
 
 module.exports = isOHW
 
