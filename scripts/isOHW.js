@@ -8,14 +8,19 @@ const isOHW = (trackData, fitParams) => {
   switch (true) {
     case (ohwFactor < 20):
       const ohwString = ohwStrings.superLow;
+      break;
     case (ohwFactor < 50):
       const ohwString = ohwStrings.low;
+      break;
     case (ohwFactor < 75):
       const ohwString = ohwStrings.medium;
+      break;
     case (ohwFactor < 100):
       const ohwString = ohwStrings.high;
+      break;
     default:
       const ohwString = ohwStrings.superHigh;
+      break;
   }
   return { ohwBool, ohwString };
 
