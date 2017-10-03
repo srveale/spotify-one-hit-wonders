@@ -11,10 +11,12 @@ const processTracks = function (tracks) {
   const isOHW = checkIfOHW(tracks, fitParams);
   console.log("isOHW", isOHW);
 
+  const artistName = _.get(tracks, '0.artists.0.name', "")
 	return {
 		processedTracks,
 		fitParams,
-    isOHW
+    isOHW,
+    artistName,
 	}
 }
 
