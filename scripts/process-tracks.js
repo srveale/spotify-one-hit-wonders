@@ -4,11 +4,24 @@ const _ = require('lodash');
 const checkIfOHW = require('./isOHW');
 
 const processTracks = function (tracks) {
-  const popularities = tracks.map(track => track.popularity ? tracks.popularity : 1).sort().reverse();
+  let popularities = tracks.map(track => track.popularity).sort().reverse();
+
+  // Temporarily fill dummy data
+  let smallestPopularity = 101;
+  popularities.map(popularity => {
+    if (popularity > 0 && popularity < smallestPopularity) smallestPopularity = popularity;
+  })
+
+  popularities = popularities.map(popularity => {
+    return  popularity ? popularity : smallestPopularity;  
+  });
   console.log('track popularities', popularities)
   const fitParams = regression.exponential(popularities.map((pop, i) => [i, pop]), {precision: 3});
 
-  const processedTracks = _.sortBy(tracks, (track) => -track.popularity);
+  let processedTracks = _.sortBy(tracks, (track) => -track.popularity);
+  processedTracks.map((track, i) => {
+    processedTracks[i].popularity = processedTracks[i].popularity ? processedTracks[i].popularity : smallestPopularity;
+  })
   const isOHW = checkIfOHW(tracks, fitParams);
   console.log("isOHW", isOHW);
 
