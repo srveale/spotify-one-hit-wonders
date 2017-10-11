@@ -13,14 +13,14 @@ const processTracks = function (tracks) {
   })
 
   popularities = popularities.map(popularity => {
-    return  popularity ? popularity : smallestPopularity;  
+    return  popularity ? popularity : smallestPopularity / 1.5;  
   });
   console.log('track popularities', popularities)
   const fitParams = regression.exponential(popularities.map((pop, i) => [i, pop]), {precision: 3});
 
   let processedTracks = _.sortBy(tracks, (track) => -track.popularity);
   processedTracks.map((track, i) => {
-    processedTracks[i].popularity = processedTracks[i].popularity ? processedTracks[i].popularity : smallestPopularity;
+    processedTracks[i].popularity = processedTracks[i].popularity ? processedTracks[i].popularity : smallestPopularity / 1.5;
   })
   const isOHW = checkIfOHW(tracks, fitParams);
   console.log("isOHW", isOHW);
