@@ -20,7 +20,6 @@ const tokenOptions = {
 	method: "POST"
 }
 
-
 // Database config
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
@@ -33,23 +32,18 @@ mongoose.connect(mLabs_url, function(mongooseErr, db) {
 	console.log('connected to mongo', mongooseErr, db)
 })
 
-
 // Get an artists track popularity data from the artist name
 router.get('/:artist', async function(req, res, next) {
 	// Check if a fresh token exists
 	const now = new Date;
 	now.setHours(now.getHours() - 1);
 	const freshTokens = await Token.find({date: {$gt: now}}, ()=>{});
-	console.log("freshTokens", freshTokens);
-
 
 	const freshAccessToken = freshTokens.length ? freshTokens[0].token : "";
 	const encodedArtist = encodeURI(req.params.artist)
-	console.log("encodedArtist", encodedArtist);
 
 	// Get access token
 	if (!freshAccessToken) {
-		console.log('no access token')
 		request.post(tokenOptions, (tokenError, tokenRes, tokenBody) => {
 			const parsedTokenBody = JSON.parse(tokenBody);
 			const tokenLog = new Token({
@@ -94,16 +88,13 @@ router.get('/:artist', async function(req, res, next) {
 						fitParams: processedData.fitParams,
 						date: new Date,
 					});
-					log.save();
+					// log.save();
 					res.send(processedData)
 				})
-
 			})
-
 		})
 	} else {
 		// Fresh token exists
-		console.log('using saved access token')
 		const searchOptions = {
 			url: `https://api.spotify.com/v1/search?q=${encodedArtist}&type=artist`,
 			headers: {
@@ -122,7 +113,7 @@ router.get('/:artist', async function(req, res, next) {
 			const artistId = items[0].id;
 			// Get Track Data
 			const trackOptions = {
-				url: `https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=CA`,
+				url: `https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=US`,
 				headers: {
 					'Authorization': 'Bearer ' + freshAccessToken,
 				},
@@ -131,6 +122,8 @@ router.get('/:artist', async function(req, res, next) {
 			};
 			request.get(trackOptions, (tracksError, tracksRes, tracksBody)=> {
 				// Process track data and send it with response
+				console.log('tracksBody', tracksBody.tracks.map(track=> track.popularity))
+				console.log('track names', tracksBody.tracks.map(track=> track.name))
 				const processedData = processTracks(tracksBody.tracks);
 				const log = new Log({
 					artistId,
@@ -139,7 +132,7 @@ router.get('/:artist', async function(req, res, next) {
 					fitParams: processedData.fitParams,
 					date: new Date,
 				});
-				log.save();
+				// log.save();
 				res.send(processedData)
 			})
 		})
