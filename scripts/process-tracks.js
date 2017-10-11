@@ -20,7 +20,7 @@ const processTracks = function (tracks) {
 
   let processedTracks = _.sortBy(tracks, (track) => -track.popularity);
   processedTracks.map((track, i) => {
-    processedTracks[i].popularity = processedTracks[i].popularity ? processedTracks[i].popularity : smallestPopularity;
+    processedTracks[i].popularity = processedTracks[i].popularity ? processedTracks[i].popularity : smallestPopularity / (1 + i * i / 200);
   })
   const isOHW = checkIfOHW(tracks, fitParams);
   console.log("isOHW", isOHW);
