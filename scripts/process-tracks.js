@@ -4,7 +4,7 @@ const _ = require('lodash');
 const checkIfOHW = require('./isOHW');
 
 const processTracks = function (tracks) {
-  const popularities = tracks.map(track => track.popularity).sort().reverse();
+  const popularities = tracks.map(track => track.popularity ? tracks.popularity : 1).sort().reverse();
   console.log('track popularities', popularities)
   const fitParams = regression.exponential(popularities.map((pop, i) => [i, pop]), {precision: 3});
 
