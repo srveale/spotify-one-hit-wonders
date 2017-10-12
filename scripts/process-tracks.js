@@ -43,7 +43,7 @@ const processTracks = function (tracks) {
 
   const artistName = _.get(tracks, '0.artists.0.name', "")
   console.log('artistName', artistName)
-  console.log('ohw factor', Math.abs(fitParams.equation[1]) * 1000;
+  console.log('ohw factor', Math.abs(fitParams.equation[1]) * 1000);
 	return {
 		processedTracks,
 		fitParams,
