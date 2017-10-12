@@ -29,7 +29,10 @@ const Log = require('../models/Log');
 const Token = require('../models/Token');
 
 mongoose.connect(mLabs_url, function(mongooseErr, db) {
-	console.log('connected to mongo', mongooseErr, db)
+	if (mongooseErr) {
+		console.log('mongooseErr', mongooseErr)
+	}
+	console.log('connected to mongo')
 })
 
 // Get an artists track popularity data from the artist name
@@ -123,7 +126,6 @@ router.get('/:artist', async function(req, res, next) {
 			request.get(trackOptions, (tracksError, tracksRes, tracksBody)=> {
 				// Process track data and send it with response
 				console.log('tracksBody', tracksBody.tracks.map(track=> track.popularity))
-				console.log('track names', tracksBody.tracks.map(track=> track.name))
 				const processedData = processTracks(tracksBody.tracks);
 				const log = new Log({
 					artistId,

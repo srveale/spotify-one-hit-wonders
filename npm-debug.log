@@ -1,6 +1,7 @@
 0 info it worked if it ends with ok
 1 verbose cli [ '/Users/scottveale/.nvm/versions/node/v7.6.0/bin/node',
 1 verbose cli   '/Users/scottveale/.nvm/versions/node/v7.6.0/bin/npm',
+1 verbose cli   'run',
 1 verbose cli   'start' ]
 2 info using npm@4.1.2
 3 info using node@v7.6.0
@@ -27,7 +28,7 @@
 15 verbose pkgid spotify-one-hit-wonders@1.0.0
 16 verbose cwd /Users/scottveale/Projects/spotify-one-hit-wonders
 17 error Darwin 16.6.0
-18 error argv "/Users/scottveale/.nvm/versions/node/v7.6.0/bin/node" "/Users/scottveale/.nvm/versions/node/v7.6.0/bin/npm" "start"
+18 error argv "/Users/scottveale/.nvm/versions/node/v7.6.0/bin/node" "/Users/scottveale/.nvm/versions/node/v7.6.0/bin/npm" "run" "start"
 19 error node v7.6.0
 20 error npm  v4.1.2
 21 error code ELIFECYCLE
