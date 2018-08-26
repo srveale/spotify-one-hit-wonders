@@ -4,6 +4,7 @@ const _ = require('lodash');
 const artists = require('../artists').artists;
 
 const { redirect_uri, client_secret, client_id, mLabs_url } = require('../config');
+const { client_secret, client_id, mLabs_url } = process.env;
 
 const payload = client_id + ":" + client_secret;
 const encodedPayload = new Buffer(payload).toString("base64");
