@@ -6,6 +6,7 @@ const processTracks = require('../scripts/process-tracks');
 
 // const { redirect_uri, client_secret, client_id, mLabs_url } = require('../config');
 const { client_secret, client_id, mLabs_url } = process.env;
+console.log('client_secret, client_id, mLabs_url', client_secret, client_id, mLabs_url)
 
 const payload = client_id + ":" + client_secret;
 const encodedPayload = new Buffer(payload).toString("base64");

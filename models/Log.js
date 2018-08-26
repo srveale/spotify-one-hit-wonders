@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 // create a schema
 const logSchema = new Schema({
-  	artistId: String,
+  artistId: String,
  	artistName: String,
  	isOHW: Object,
  	fitParams: Object,
