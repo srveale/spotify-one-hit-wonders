@@ -3,7 +3,11 @@ const router = express.Router();
 const request = require('request');
 const rp = require('request-promise')
 const processTracks = require('../scripts/process-tracks');
-const config = require('../config');
+
+if (!process.env.client_secret) {
+	const config = require('../config')
+	console.log('config', config);
+}
 
 // const { redirect_uri, client_secret, client_id, mLabs_url } = require('../config');
 const client_secret = process.env.client_secret || config.client_secret;

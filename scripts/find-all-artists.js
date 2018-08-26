@@ -1,7 +1,9 @@
 const request = require('request');
 const _ = require('lodash');
-const config = require('../config')
-console.log('config', config);
+if (!process.env.client_secret) {
+	const config = require('../config')
+	console.log('config', config);
+}
 
 const artists = require('../artists').artists;
 
