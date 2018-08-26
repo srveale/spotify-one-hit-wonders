@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "PORT=3001 node ./bin/www"
+    "start": "node ./bin/www"
   },
   "apps": [
     {
@@ -13,7 +13,7 @@
       "script": "bin/www",
       "exec_interpreter": "node@7.10.1",
       "env": {
-        "PORT": "3000"
+        "PORT": "3001"
       }
     }
   ],
