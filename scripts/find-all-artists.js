@@ -1,10 +1,13 @@
 const request = require('request');
 const _ = require('lodash');
+const config = require('../config')
+console.log('config', config);
 
 const artists = require('../artists').artists;
 
-// const { redirect_uri, client_secret, client_id, mLabs_url } = require('../config');
-const { client_secret, client_id, mLabs_url } = process.env;
+const client_secret = process.env.client_secret || config.client_secret;
+const client_id = process.env.client_id || config.client_id;
+const mLabs_url = process.env.mLabs_url || config.mLabs_url;
 console.log('client_secret, client_id, mLabs_url', client_secret, client_id, mLabs_url)
 
 const payload = client_id + ":" + client_secret;

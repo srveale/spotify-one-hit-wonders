@@ -15,6 +15,7 @@ var http = require('http');
  */
 
 var port = normalizePort(process.env.PORT || '3001');
+console.log('port to listen on', port)
 app.set('port', port);
 
 /**
