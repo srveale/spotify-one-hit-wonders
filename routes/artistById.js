@@ -10,7 +10,6 @@ if (!process.env.client_secret) {
 	config = require('../config')
 }
 
-// const { redirect_uri, client_secret, client_id, mLabs_url } = require('../config');
 const client_secret = process.env.client_secret || config.client_secret;
 const client_id = process.env.client_id || config.client_id;
 const mLabs_url = process.env.mLabs_url || config.mLabs_url;
@@ -36,12 +35,9 @@ const Token = require('../models/Token');
 router.get('/:id/:artistName', async function(req, res, next) {
 	const artistId = req.params.id
 	const artistName = req.params.artistName;
-	console.log('artistId', artistId)
-	console.log('artistName 1', artistName )
-
 
 	// There should be a fresh token for this function, since
-	// You get here immediately after another search
+	// you get here immediately after another search
 	const now = new Date;
 	now.setHours(now.getHours() - 1);
 	const freshTokens = await Token.find({date: {$gt: now}}, ()=>{});
@@ -53,7 +49,6 @@ router.get('/:id/:artistName', async function(req, res, next) {
 
 
 const getSingleArtist = (token, artistId, artistName, res) => {
-	console.log('artistName 2', artistName )
 	const trackOptions = {
 		url: `https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=CA`,
 		headers: {
@@ -69,7 +64,6 @@ const getSingleArtist = (token, artistId, artistName, res) => {
 		// Override artistname, since we know for sure from the front end
 		processedData.artistName = artistName;
 
-		console.log('artistName 3', artistName )
 		const log = new Log({
 			artistId,
 			artistName,

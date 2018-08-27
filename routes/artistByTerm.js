@@ -53,7 +53,6 @@ router.get('/:artist', async function(req, res, next) {
 
 	const freshAccessToken = freshTokens.length ? freshTokens[0].token : "";
 	const encodedArtist = encodeURI(req.params.artist)
-	console.log('searching for ', encodedArtist)
 
 	if (!freshAccessToken) {
 		// Get access token and save for future requests
@@ -91,23 +90,15 @@ const searchArtists = (token, encodedArtist, res) => {
 		}
 
 		const artistId = items[0].id;
-		console.log('items[0].name', items[0].name)
 		const secondaryArtists = items.filter((item, i) => {
 			// The first one is the primary.
 			// Only return 4
 			// Sometimes they have the original among the secondaries
-			console.log('item.name', item.name)
-			console.log('item.popularity > 0', item.popularity > 0)
-			console.log('item.name !== items[0].name', item.name !== items[0].name)
-			console.log('boolean', item.popularity > 0 && item.name !== items[0].name && i !== 0 && i < 5)
 			return item.popularity > 0 && 
 				item.name !== items[0].name &&
 				i !== 0 && 
 				i < 5;
 		});
-
-		console.log('secondaryArtists', secondaryArtists)
-
 
 		// Get Track Data
 		const trackOptions = {

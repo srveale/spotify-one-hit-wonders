@@ -31,7 +31,6 @@ request.post(tokenOptions, (tokenError, tokenRes, tokenBody) => {
 	const parsedTokenBody = JSON.parse(tokenBody);
 
 	artistArr.splice(0, 5).map(artist => {
-		console.log('getting artist, ', artist)
 		// Get Artist Id
 		const searchOptions = {
 			url: `https://api.spotify.com/v1/search?q=${artist}&type=artist`,
@@ -42,7 +41,6 @@ request.post(tokenOptions, (tokenError, tokenRes, tokenBody) => {
 			method: "POST"
 		}
 		request.get(searchOptions, (searchError, searchRes, searchBody) => {
-			console.log('got artist ID')
 			const items = searchBody.artists.items;
 			if (!items.length) {
 				console.log('searchBody with no artists', searchBody)
@@ -58,9 +56,7 @@ request.post(tokenOptions, (tokenError, tokenRes, tokenBody) => {
 				json: true,
 				method: "POST"
 			};
-			console.log('getting artist data')
 			request.get(trackOptions, (tracksError, tracksRes, tracksBody)=> {
-				console.log('got artist data', tracksBody.length)
 			})
 		})
 	})
