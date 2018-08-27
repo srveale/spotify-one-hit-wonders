@@ -43,7 +43,6 @@ request.post(tokenOptions, (tokenError, tokenRes, tokenBody) => {
 		request.get(searchOptions, (searchError, searchRes, searchBody) => {
 			const items = searchBody.artists.items;
 			if (!items.length) {
-				console.log('searchBody with no artists', searchBody)
 			}
 
 			const artistId = items[0].id;

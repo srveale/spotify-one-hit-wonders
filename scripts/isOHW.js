@@ -30,8 +30,9 @@ module.exports = isOHW
 
 const ohwStrings = {
   "superLow": "Not even close!",
-  "low": "Not really",
+  "low": "Very low",
   "medium": "Middle of the pack",
-  "high": "Getting up there",
-  "superHigh": "Certified One-Hit-Wonder"
+  "high": "Approaching one-hit-wonder status",
+  "superHigh": "Certified One-Hit-Wonder!",
+  "ungodly": "Off the charts! ...once"
 }

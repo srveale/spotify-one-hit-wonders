@@ -85,7 +85,6 @@ const searchArtists = (token, encodedArtist, res) => {
 	request.get(searchOptions, (searchError, searchRes, searchBody) => {
 		const items = searchBody.artists.items;
 		if (!items.length) {
-			console.log('searchBody with no artists', searchBody)
 			return res.send({ error: "No artists found, try again" })
 		}
 
